@@ -32,7 +32,7 @@ library(superheat)
 
 # Set WD ####
 
-setwd("C:/Users/Bohdan/Desktop/")
+setwd("C:/Users/AAAA/Desktop/")
 
 # Main Function Code ####
 
