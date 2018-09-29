@@ -1,4 +1,4 @@
-# Libraries ####
+5-# Libraries ####
 # install.packages("circlize")
 # install.packages("superheat")
 # install.packages("plotly")
@@ -210,6 +210,7 @@ CorrHeatPCA <- function(excel, sheet, uniqueList = "none", PCA = T, Heat = T, Co
     # PCA 3D pre ####
     pca <- prcomp(a.bind[,-(dim(a.bind)[2])], scale. = T)
     
+    jj <- round(((pca$sdev^2 / sum(pca$sdev^2))*100), digits = 1)
     
     data2 <- as.data.frame(pca$x)
     f <- list(
@@ -237,20 +238,20 @@ CorrHeatPCA <- function(excel, sheet, uniqueList = "none", PCA = T, Heat = T, Co
       layout(scene = list(
         xaxis = list(title = paste0(
           'PCA1 ', 
-          as.character(round(eig.val[1,1], 1)), "%"),
+          as.character(jj[1]), "%"),
           titlefont = f,
           gridwidth = 2,
           gridcolor = "black",
           opacity = 0.7), 
         yaxis = list(title = paste0(
           'PCA2 ', 
-          as.character(round(eig.val[2,1], 1)), "%"),
+          as.character(jj[2]), "%"),
           titlefont = f,
           gridwidth = 2,
           gridcolor = "black"),
         zaxis = list(title = paste0(
           'PCA3 ', 
-          as.character(round(eig.val[3,1], 1)), "%"),
+          as.character(jj[3]), "%"),
           titlefont = f,
           gridwidth = 2,
           gridcolor = "black")),
